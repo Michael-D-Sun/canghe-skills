@@ -599,6 +599,11 @@ WECHAT_APP_SECRET=你的AppSecret
 - `manga_comic` - 日式漫画
 - `chibi` - Q版萌系
 
+**测试用例**:
+- 提示词: "一名长发高中少女漫步在盛开的樱花树下，粉色的花瓣在微风中缓缓飘落，明媚的春季阳光洒下，产生柔和的镜头光晕效果，侧向跟踪镜头，怀旧氛围，高画质"
+- 风格: `ghibli`
+- 输出: [screenshots/manga-style-video/sakura-girl.mp4](./screenshots/manga-style-video/sakura-girl.mp4)
+
 ### AI 生成技能 (AI Generation Skills)
 
 AI 驱动的生成后端。

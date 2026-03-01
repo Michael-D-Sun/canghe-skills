@@ -10,6 +10,18 @@ import json
 import time
 import argparse
 from typing import Optional, List, Dict
+from pathlib import Path
+
+# 添加 common 模块到路径
+COMMON_DIR = Path(__file__).parent.parent.parent / "common"
+sys.path.insert(0, str(COMMON_DIR))
+
+# 导入环境变量工具
+try:
+    from env_utils import load_env, require_env_key
+except ImportError:
+    print("错误: 无法加载 env_utils 模块", file=sys.stderr)
+    sys.exit(1)
 
 # 尝试导入 SDK
 try:
@@ -20,8 +32,11 @@ except ImportError:
     print("错误: 请先安装 SDK: pip install 'volcengine-python-sdk[ark]'")
     sys.exit(1)
 
-# API 配置
-API_KEY = os.environ.get("SEEDANCE_API_KEY", "8183a3de-9119-4524-9f59-e47b265229b6")
+# 加载环境变量
+load_env()
+
+# API 配置 - 无默认值，必须从环境变量获取
+API_KEY = require_env_key("ARK_API_KEY", ["SEEDANCE_API_KEY"])
 BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
 
 

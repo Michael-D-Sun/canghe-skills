@@ -78,12 +78,33 @@ python3 scripts/generate_video.py --status <task_id> --wait -o starry.mp4
 
 ## API 密钥配置
 
-脚本已内置 API Key: `8183a3de-9119-4524-9f59-e47b265229b6`
+需要设置 `ARK_API_KEY` 或 `SEEDANCE_API_KEY` 环境变量。
 
-如需更换，可设置环境变量：
+### 配置方式（推荐）
+
+1. 复制配置模板：
 ```bash
+cp .canghe-skills/.env.example .canghe-skills/.env
+```
+
+2. 编辑 `.canghe-skills/.env` 文件，填写你的 API Key：
+```
+ARK_API_KEY=your-actual-api-key-here
+```
+
+### 或使用环境变量
+
+```bash
+export ARK_API_KEY="your-api-key"
+# 或
 export SEEDANCE_API_KEY="your-api-key"
 ```
+
+### 加载优先级
+
+1. 系统环境变量 (`process.env`)
+2. 当前目录 `.canghe-skills/.env`
+3. 用户主目录 `~/.canghe-skills/.env`
 
 ## 提示词优化建议
 

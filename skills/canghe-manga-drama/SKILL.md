@@ -17,12 +17,35 @@ description: 漫剧生成器 - 基于 Seedance 的漫画风格短剧生成工具
 
 ## 前置要求
 
-1. 设置环境变量：
+需要设置 `ARK_API_KEY` 环境变量。
+
+### 配置方式（推荐）
+
+1. 复制配置模板：
+```bash
+cp .canghe-skills/.env.example .canghe-skills/.env
+```
+
+2. 编辑 `.canghe-skills/.env` 文件，填写你的 API Key：
+```
+ARK_API_KEY=your-actual-api-key-here
+```
+
+### 或使用环境变量
+
 ```bash
 export ARK_API_KEY="your-api-key"
 ```
 
-2. 需要依赖技能：**seedance-video-generation**
+### 加载优先级
+
+1. 系统环境变量 (`process.env`)
+2. 当前目录 `.canghe-skills/.env`
+3. 用户主目录 `~/.canghe-skills/.env`
+
+---
+
+需要依赖技能：**seedance-video-generation**
 
 ## 使用方法
 

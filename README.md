@@ -599,6 +599,11 @@ Manga-style video generator - specialized in generating anime-style animated vid
 - `manga_comic` - Japanese manga
 - `chibi` - Q-style cute
 
+**Test Case**:
+- Prompt: "A long-haired high school girl walking under blooming cherry blossom trees, pink petals gently falling in the breeze, bright spring sunshine casting soft lens flare effects, side tracking shot, nostalgic atmosphere, high quality"
+- Style: `ghibli`
+- Output: [screenshots/manga-style-video/sakura-girl.mp4](./screenshots/manga-style-video/sakura-girl.mp4)
+
 ### AI Generation Skills
 
 AI-powered generation backends.

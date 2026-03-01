@@ -14,10 +14,24 @@ import ssl
 from pathlib import Path
 from typing import Optional
 
+# 添加 common 模块到路径
+COMMON_DIR = Path(__file__).parent.parent.parent / "common"
+sys.path.insert(0, str(COMMON_DIR))
+
+# 导入环境变量工具
+try:
+    from env_utils import load_env, require_env_key
+except ImportError:
+    print("错误: 无法加载 env_utils 模块", file=sys.stderr)
+    sys.exit(1)
+
 # 忽略SSL验证
 ssl_context = ssl.create_default_context()
 ssl_context.check_hostname = False
 ssl_context.verify_mode = ssl.CERT_NONE
+
+# 加载环境变量
+load_env()
 
 # API配置
 BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
@@ -62,11 +76,7 @@ MANGA_STYLES = {
 
 def get_api_key():
     """获取API Key"""
-    key = os.environ.get("ARK_API_KEY")
-    if not key:
-        print("❌ 错误: 请设置 ARK_API_KEY 环境变量", file=sys.stderr)
-        sys.exit(1)
-    return key
+    return require_env_key("ARK_API_KEY")
 
 
 def image_to_base64(image_path: str) -> str:

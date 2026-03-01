@@ -13,8 +13,22 @@ import requests
 from pathlib import Path
 from typing import Optional
 
+# 添加 common 模块到路径
+COMMON_DIR = Path(__file__).parent.parent.parent / "common"
+sys.path.insert(0, str(COMMON_DIR))
+
+# 导入环境变量工具
+try:
+    from env_utils import load_env, require_env_key
+except ImportError:
+    print("错误: 无法加载 env_utils 模块", file=sys.stderr)
+    sys.exit(1)
+
+# 加载环境变量
+load_env()
+
 # API 配置
-API_KEY = os.environ.get("ARK_API_KEY", "")
+API_KEY = None  # 将通过 get_api_key() 获取
 BASE_URL = "https://ark.cn-beijing.volces.com/api/v3"
 DEFAULT_MODEL = "doubao-seed-2-0-pro-260215"
 DEFAULT_FPS = 1
@@ -22,12 +36,7 @@ DEFAULT_FPS = 1
 
 def get_api_key():
     """获取 API Key"""
-    key = os.environ.get("ARK_API_KEY")
-    if not key:
-        print("错误: 请设置 ARK_API_KEY 环境变量", file=sys.stderr)
-        print("export ARK_API_KEY='your-api-key'", file=sys.stderr)
-        sys.exit(1)
-    return key
+    return require_env_key("ARK_API_KEY")
 
 
 def upload_video_file(api_key: str, file_path: str, fps: int = 1) -> str:

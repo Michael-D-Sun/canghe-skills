@@ -12,6 +12,20 @@ import subprocess
 from pathlib import Path
 from typing import List, Dict, Optional
 
+# 添加 common 模块到路径
+COMMON_DIR = Path(__file__).parent.parent.parent / "common"
+sys.path.insert(0, str(COMMON_DIR))
+
+# 导入环境变量工具
+try:
+    from env_utils import load_env, require_env_key
+except ImportError:
+    print("错误: 无法加载 env_utils 模块", file=sys.stderr)
+    sys.exit(1)
+
+# 加载环境变量
+load_env()
+
 # 默认配置
 DEFAULT_MODEL = "doubao-seedance-1-5-pro-251215"
 DEFAULT_RATIO = "9:16"  # 漫剧常用竖屏
@@ -358,9 +372,7 @@ def main():
         sys.exit(1)
     
     # 设置 API Key
-    if not os.environ.get("ARK_API_KEY"):
-        print("❌ 错误: 请设置 ARK_API_KEY 环境变量", file=sys.stderr)
-        sys.exit(1)
+    require_env_key("ARK_API_KEY")
     
     try:
         if args.command == "generate":
