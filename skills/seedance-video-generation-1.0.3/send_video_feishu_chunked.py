@@ -9,10 +9,10 @@ import json
 import requests
 from pathlib import Path
 
-# 飞书配置
-APP_ID = "cli_a9005be686f89bd3"
-APP_SECRET = "UvUMxhBGbejzqbeuR5BQqeZnjCrnsCiC"
-FEISHU_DEFAULT_USER = "ou_20bf7fe6e4ec0f2f928e8ebc1c0a6e76"
+# 飞书配置 - 从环境变量读取
+APP_ID = os.getenv("FEISHU_APP_ID", "")
+APP_SECRET = os.getenv("FEISHU_APP_SECRET", "")
+FEISHU_DEFAULT_USER = os.getenv("FEISHU_DEFAULT_USER", "")
 
 # 分片大小: 5MB
 CHUNK_SIZE = 5 * 1024 * 1024
