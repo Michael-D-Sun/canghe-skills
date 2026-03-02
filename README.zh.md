@@ -78,6 +78,62 @@ npx skills add freestylefly/canghe-skills
 
 内容生成和发布技能。
 
+#### canghe-manga-drama
+
+漫剧生成器 - 基于 Seedance 的漫画风格短剧生成工具。支持以主角图片为基础，自动生成漫剧分镜脚本并生成视频。
+
+```bash
+# 使用主角图片生成漫剧
+/canghe-manga-drama generate --image /path/to/character.png --theme "校园日常" --scenes 3
+
+# 从自定义脚本生成
+/canghe-manga-drama from-script --script my_drama.json --image /path/to/character.png
+```
+
+**内置分镜类型**：`introduction`（主角登场）、`action`（动作场景）、`emotion`（情感表达）、`interaction`（互动场景）、`ending`（结尾定格）
+
+**测试用例**:
+- 主题: "樱花树下的少女"
+- 主角图片: [sakura-girl-preview.png](./screenshots/manga-style-video/sakura-girl-preview.png)
+- 分镜数: 3
+- 输出:
+  - 分镜1 (主角登场): [![scene_1-introduction](./screenshots/manga-drama/scene_617-preview.png)](./screenshots/manga-drama/scene_1-introduction.mp4)
+  - 分镜2 (动作场景): [![scene_2-action](./screenshots/manga-drama/scene_552-preview.png)](./screenshots/manga-drama/scene_2-action.mp4)
+  - 分镜3 (情感表达): [![scene_3-emotion](./screenshots/manga-drama/scene_448-preview.png)](./screenshots/manga-drama/scene_3-emotion.mp4)
+
+#### canghe-manga-style-video
+
+漫画风格视频生成器 - 专门生成日式治愈系、国风水墨、美式卡通等漫画风格的动画视频。内置 8 种漫画风格模板，支持图生视频。
+
+```bash
+# 基础生成（日式风格）
+/canghe-manga-style-video "女孩在樱花树下读书"
+
+# 指定风格
+/canghe-manga-style-video "山水意境" --style chinese
+/canghe-manga-style-video "可爱小动物" --style cartoon
+/canghe-manga-style-video "乡村风景" --style ghibli
+
+# 带参考图片
+/canghe-manga-style-video "奶奶在包饺子" --style japanese --image ~/Desktop/character.png
+```
+
+**8 种漫画风格**：
+- `japanese` - 日式治愈系（默认）
+- `ghibli` - 吉卜力风格
+- `chinese` - 国风水墨
+- `cartoon` - 美式卡通
+- `sketch` - 铅笔素描
+- `watercolor` - 水彩手绘
+- `manga_comic` - 日式漫画
+- `chibi` - Q版萌系
+
+**测试用例**:
+- 提示词: "一名长发高中少女漫步在盛开的樱花树下，粉色的花瓣在微风中缓缓飘落，明媚的春季阳光洒下，产生柔和的镜头光晕效果，侧向跟踪镜头，怀旧氛围，高画质"
+- 风格: `ghibli`
+- 输出: [![sakura-girl-preview](./screenshots/manga-style-video/sakura-girl-preview.png)](./screenshots/manga-style-video/sakura-girl.mp4)
+
+
 #### canghe-xhs-images
 
 小红书信息图系列生成器。将内容拆解为 1-10 张卡通风格信息图，支持 **风格 × 布局** 二维系统。
@@ -557,62 +613,6 @@ WECHAT_APP_SECRET=你的AppSecret
 4. 将你操作的机器 IP 加入白名单
 
 **浏览器方式**（无需 API 配置）：需已安装 Google Chrome，首次运行需扫码登录（登录状态会保存）
-
-#### canghe-manga-drama
-
-漫剧生成器 - 基于 Seedance 的漫画风格短剧生成工具。支持以主角图片为基础，自动生成漫剧分镜脚本并生成视频。
-
-```bash
-# 使用主角图片生成漫剧
-/canghe-manga-drama generate --image /path/to/character.png --theme "校园日常" --scenes 3
-
-# 从自定义脚本生成
-/canghe-manga-drama from-script --script my_drama.json --image /path/to/character.png
-```
-
-**内置分镜类型**：`introduction`（主角登场）、`action`（动作场景）、`emotion`（情感表达）、`interaction`（互动场景）、`ending`（结尾定格）
-
-**测试用例**:
-- 主题: "樱花树下的少女"
-- 主角图片: [sakura-girl-preview.png](./screenshots/manga-style-video/sakura-girl-preview.png)
-- 分镜数: 3
-- 输出:
-  - 分镜1 (主角登场): [![scene_1-introduction](./screenshots/manga-drama/scene_617-preview.png)](./screenshots/manga-drama/scene_1-introduction.mp4)
-  - 分镜2 (动作场景): [![scene_2-action](./screenshots/manga-drama/scene_552-preview.png)](./screenshots/manga-drama/scene_2-action.mp4)
-  - 分镜3 (情感表达): [![scene_3-emotion](./screenshots/manga-drama/scene_448-preview.png)](./screenshots/manga-drama/scene_3-emotion.mp4)
-
-#### canghe-manga-style-video
-
-漫画风格视频生成器 - 专门生成日式治愈系、国风水墨、美式卡通等漫画风格的动画视频。内置 8 种漫画风格模板，支持图生视频。
-
-```bash
-# 基础生成（日式风格）
-/canghe-manga-style-video "女孩在樱花树下读书"
-
-# 指定风格
-/canghe-manga-style-video "山水意境" --style chinese
-/canghe-manga-style-video "可爱小动物" --style cartoon
-/canghe-manga-style-video "乡村风景" --style ghibli
-
-# 带参考图片
-/canghe-manga-style-video "奶奶在包饺子" --style japanese --image ~/Desktop/character.png
-```
-
-**8 种漫画风格**：
-- `japanese` - 日式治愈系（默认）
-- `ghibli` - 吉卜力风格
-- `chinese` - 国风水墨
-- `cartoon` - 美式卡通
-- `sketch` - 铅笔素描
-- `watercolor` - 水彩手绘
-- `manga_comic` - 日式漫画
-- `chibi` - Q版萌系
-
-**测试用例**:
-- 提示词: "一名长发高中少女漫步在盛开的樱花树下，粉色的花瓣在微风中缓缓飘落，明媚的春季阳光洒下，产生柔和的镜头光晕效果，侧向跟踪镜头，怀旧氛围，高画质"
-- 风格: `ghibli`
-- 输出: [![sakura-girl-preview](./screenshots/manga-style-video/sakura-girl-preview.png)](./screenshots/manga-style-video/sakura-girl.mp4)
-
 
 
 

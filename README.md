@@ -78,6 +78,48 @@ Skills are organized into three categories:
 
 Content generation and publishing skills.
 
+#### canghe-manga-drama
+
+Manga drama generator - creates comic-style short dramas based on Seedance. Supports automatic storyboard script generation with a character image as the base.
+
+```bash
+# Generate manga drama with character image
+/canghe-manga-drama generate --image /path/to/character.png --theme "campus life" --scenes 3
+
+# From custom script
+/canghe-manga-drama from-script --script my_drama.json --image /path/to/character.png
+```
+
+**Built-in Scene Types**: `introduction` (character entry), `action` (action scene), `emotion` (emotion expression), `interaction` (interaction scene), `ending` (closing shot)
+
+#### canghe-manga-style-video
+
+Manga-style video generator - specialized in generating anime-style animated videos. 8 built-in manga style templates, supports image-to-video.
+
+```bash
+# Basic generation with Japanese style
+/canghe-manga-style-video "A girl reading under cherry blossoms"
+
+# Specify style
+/canghe-manga-style-video "Landscape painting" --style chinese
+/canghe-manga-style-video "Cute animals" --style cartoon
+/canghe-manga-style-video "Rural scenery" --style ghibli
+
+# With reference image
+/canghe-manga-style-video "Grandma making dumplings" --style japanese --image ~/Desktop/character.png
+```
+
+**8 Manga Styles**:
+- `japanese` - Japanese healing style (default)
+- `ghibli` - Studio Ghibli style
+- `chinese` - Chinese ink wash style
+- `cartoon` - American cartoon style
+- `sketch` - Pencil sketch
+- `watercolor` - Watercolor hand-drawn
+- `manga_comic` - Japanese manga
+- `chibi` - Q-style cute
+
+
 #### canghe-xhs-images
 
 Xiaohongshu (RedNote) infographic series generator. Breaks down content into 1-10 cartoon-style infographics with **Style × Layout** two-dimensional system.
@@ -572,15 +614,6 @@ Manga drama generator - creates comic-style short dramas based on Seedance. Supp
 
 **Built-in Scene Types**: `introduction` (character entry), `action` (action scene), `emotion` (emotion expression), `interaction` (interaction scene), `ending` (closing shot)
 
-**Test Case**:
-- Theme: "Girl Under Cherry Blossom Tree"
-- Character image: [sakura-girl-preview.png](./screenshots/manga-style-video/sakura-girl-preview.png)
-- Scenes: 3
-- Output:
-  - Scene 1 (Introduction): [![scene_1-introduction](./screenshots/manga-drama/scene_617-preview.png)](./screenshots/manga-drama/scene_1-introduction.mp4)
-  - Scene 2 (Action): [![scene_2-action](./screenshots/manga-drama/scene_552-preview.png)](./screenshots/manga-drama/scene_2-action.mp4)
-  - Scene 3 (Emotion): [![scene_3-emotion](./screenshots/manga-drama/scene_448-preview.png)](./screenshots/manga-drama/scene_3-emotion.mp4)
-
 #### canghe-manga-style-video
 
 Manga-style video generator - specialized in generating anime-style animated videos. 8 built-in manga style templates, supports image-to-video.
@@ -607,11 +640,6 @@ Manga-style video generator - specialized in generating anime-style animated vid
 - `watercolor` - Watercolor hand-drawn
 - `manga_comic` - Japanese manga
 - `chibi` - Q-style cute
-
-**Test Case**:
-- Prompt: "A long-haired high school girl walking under blooming cherry blossom trees, pink petals gently falling in the breeze, bright spring sunshine casting soft lens flare effects, side tracking shot, nostalgic atmosphere, high quality"
-- Style: `ghibli`
-- Output: [![sakura-girl-preview](./screenshots/manga-style-video/sakura-girl-preview.png)](./screenshots/manga-style-video/sakura-girl.mp4)
 
 ### AI Generation Skills
 
